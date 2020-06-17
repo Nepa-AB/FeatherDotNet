@@ -343,14 +343,14 @@ namespace FeatherDotNet.Tests
                     Assert.IsTrue(new DateTime[] { new DateTime(1969, 12, 31, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 2, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 3, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 4, 0, 0, 0, DateTimeKind.Utc) }.SequenceEqual(t7));
                     Assert.IsTrue(new string[] { "A", "", "aaaaaaaa", "bbbbbbbbbbbbb", "CC" }.SequenceEqual(t8));
 
-                    Assert.IsTrue(new bool[] { true, true, true, false, false }.SequenceEqual(typed.Column1));
-                    Assert.IsTrue(new int[] { -1, 0, 1, 2, 3, }.SequenceEqual(typed.Column2));
-                    Assert.IsTrue(new double[] { -1.5, -0.5, 0.5, 1.5, 2.5 }.SequenceEqual(typed.Column3));
-                    Assert.IsTrue(new string[] { "A", "A", "B", "B", "C" }.SequenceEqual(typed.Column4));
-                    Assert.IsTrue(new DateTimeOffset[] { new DateTime(1969, 12, 31, 23, 59, 59, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 1, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 2, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 3, 0, DateTimeKind.Utc) }.SequenceEqual(typed.Column5));
-                    Assert.IsTrue(new TimeSpan[] { new TimeSpan(0, 0, 0), new TimeSpan(1, 1, 1), new TimeSpan(2, 2, 2), new TimeSpan(3, 3, 3), new TimeSpan(4, 4, 4) }.SequenceEqual(typed.Column6));
-                    Assert.IsTrue(new DateTime[] { new DateTime(1969, 12, 31, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 2, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 3, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 4, 0, 0, 0, DateTimeKind.Utc) }.SequenceEqual(typed.Column7));
-                    Assert.IsTrue(new string[] { "A", "", "aaaaaaaa", "bbbbbbbbbbbbb", "CC" }.SequenceEqual(typed.Column8));
+                    Assert.IsTrue(new bool[] { true, true, true, false, false }.SequenceEqual(typed.Column1.ToArray()));
+                    Assert.IsTrue(new int[] { -1, 0, 1, 2, 3, }.SequenceEqual(typed.Column2.ToArray()));
+                    Assert.IsTrue(new double[] { -1.5, -0.5, 0.5, 1.5, 2.5 }.SequenceEqual(typed.Column3.ToArray()));
+                    Assert.IsTrue(new string[] { "A", "A", "B", "B", "C" }.SequenceEqual(typed.Column4.ToArray()));
+                    Assert.IsTrue(new DateTimeOffset[] { new DateTime(1969, 12, 31, 23, 59, 59, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 1, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 2, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 3, 0, DateTimeKind.Utc) }.SequenceEqual(typed.Column5.ToArray()));
+                    Assert.IsTrue(new TimeSpan[] { new TimeSpan(0, 0, 0), new TimeSpan(1, 1, 1), new TimeSpan(2, 2, 2), new TimeSpan(3, 3, 3), new TimeSpan(4, 4, 4) }.SequenceEqual(typed.Column6.ToArray()));
+                    Assert.IsTrue(new DateTime[] { new DateTime(1969, 12, 31, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 2, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 3, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 4, 0, 0, 0, DateTimeKind.Utc) }.SequenceEqual(typed.Column7.ToArray()));
+                    Assert.IsTrue(new string[] { "A", "", "aaaaaaaa", "bbbbbbbbbbbbb", "CC" }.SequenceEqual(typed.Column8.ToArray()));
                 }
 
                 {
@@ -389,14 +389,14 @@ namespace FeatherDotNet.Tests
                     Assert.IsTrue(new DateTime[] { new DateTime(1969, 12, 31, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 2, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 3, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 4, 0, 0, 0, DateTimeKind.Utc) }.SequenceEqual(t7));
                     Assert.IsTrue(new string[] { "A", "", "aaaaaaaa", "bbbbbbbbbbbbb", "CC" }.SequenceEqual(t8));
 
-                    Assert.IsTrue(new bool[] { true, true, true, false, false }.SequenceEqual(typed.Column1));
-                    Assert.IsTrue(new int[] { -1, 0, 1, 2, 3, }.SequenceEqual(typed.Column2));
-                    Assert.IsTrue(new double[] { -1.5, -0.5, 0.5, 1.5, 2.5 }.SequenceEqual(typed.Column3));
-                    Assert.IsTrue(new TestCategorySameNamesEnum[] { TestCategorySameNamesEnum.A, TestCategorySameNamesEnum.A, TestCategorySameNamesEnum.B, TestCategorySameNamesEnum.B, TestCategorySameNamesEnum.C }.SequenceEqual(typed.Column4));
-                    Assert.IsTrue(new DateTimeOffset[] { new DateTime(1969, 12, 31, 23, 59, 59, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 1, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 2, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 3, 0, DateTimeKind.Utc) }.SequenceEqual(typed.Column5));
-                    Assert.IsTrue(new TimeSpan[] { new TimeSpan(0, 0, 0), new TimeSpan(1, 1, 1), new TimeSpan(2, 2, 2), new TimeSpan(3, 3, 3), new TimeSpan(4, 4, 4) }.SequenceEqual(typed.Column6));
-                    Assert.IsTrue(new DateTime[] { new DateTime(1969, 12, 31, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 2, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 3, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 4, 0, 0, 0, DateTimeKind.Utc) }.SequenceEqual(typed.Column7));
-                    Assert.IsTrue(new string[] { "A", "", "aaaaaaaa", "bbbbbbbbbbbbb", "CC" }.SequenceEqual(typed.Column8));
+                    Assert.IsTrue(new bool[] { true, true, true, false, false }.SequenceEqual(typed.Column1.ToArray()));
+                    Assert.IsTrue(new int[] { -1, 0, 1, 2, 3, }.SequenceEqual(typed.Column2.ToArray()));
+                    Assert.IsTrue(new double[] { -1.5, -0.5, 0.5, 1.5, 2.5 }.SequenceEqual(typed.Column3.ToArray()));
+                    Assert.IsTrue(new TestCategorySameNamesEnum[] { TestCategorySameNamesEnum.A, TestCategorySameNamesEnum.A, TestCategorySameNamesEnum.B, TestCategorySameNamesEnum.B, TestCategorySameNamesEnum.C }.SequenceEqual(typed.Column4.ToArray()));
+                    Assert.IsTrue(new DateTimeOffset[] { new DateTime(1969, 12, 31, 23, 59, 59, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 1, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 2, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 3, 0, DateTimeKind.Utc) }.SequenceEqual(typed.Column5.ToArray()));
+                    Assert.IsTrue(new TimeSpan[] { new TimeSpan(0, 0, 0), new TimeSpan(1, 1, 1), new TimeSpan(2, 2, 2), new TimeSpan(3, 3, 3), new TimeSpan(4, 4, 4) }.SequenceEqual(typed.Column6.ToArray()));
+                    Assert.IsTrue(new DateTime[] { new DateTime(1969, 12, 31, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 2, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 3, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 4, 0, 0, 0, DateTimeKind.Utc) }.SequenceEqual(typed.Column7.ToArray()));
+                    Assert.IsTrue(new string[] { "A", "", "aaaaaaaa", "bbbbbbbbbbbbb", "CC" }.SequenceEqual(typed.Column8.ToArray()));
                 }
 
                 {
@@ -435,14 +435,14 @@ namespace FeatherDotNet.Tests
                     Assert.IsTrue(new DateTime[] { new DateTime(1969, 12, 31, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 2, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 3, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 4, 0, 0, 0, DateTimeKind.Utc) }.SequenceEqual(t7));
                     Assert.IsTrue(new string[] { "A", "", "aaaaaaaa", "bbbbbbbbbbbbb", "CC" }.SequenceEqual(t8));
 
-                    Assert.IsTrue(new bool[] { true, true, true, false, false }.SequenceEqual(typed.Column1));
-                    Assert.IsTrue(new int[] { -1, 0, 1, 2, 3, }.SequenceEqual(typed.Column2));
-                    Assert.IsTrue(new double[] { -1.5, -0.5, 0.5, 1.5, 2.5 }.SequenceEqual(typed.Column3));
-                    Assert.IsTrue(new TestCategorySameValuesEnum[] { TestCategorySameValuesEnum.Bazz, TestCategorySameValuesEnum.Bazz, TestCategorySameValuesEnum.Fizz, TestCategorySameValuesEnum.Fizz, TestCategorySameValuesEnum.Buzz }.SequenceEqual(typed.Column4));
-                    Assert.IsTrue(new DateTimeOffset[] { new DateTime(1969, 12, 31, 23, 59, 59, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 1, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 2, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 3, 0, DateTimeKind.Utc) }.SequenceEqual(typed.Column5));
-                    Assert.IsTrue(new TimeSpan[] { new TimeSpan(0, 0, 0), new TimeSpan(1, 1, 1), new TimeSpan(2, 2, 2), new TimeSpan(3, 3, 3), new TimeSpan(4, 4, 4) }.SequenceEqual(typed.Column6));
-                    Assert.IsTrue(new DateTime[] { new DateTime(1969, 12, 31, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 2, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 3, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 4, 0, 0, 0, DateTimeKind.Utc) }.SequenceEqual(typed.Column7));
-                    Assert.IsTrue(new string[] { "A", "", "aaaaaaaa", "bbbbbbbbbbbbb", "CC" }.SequenceEqual(typed.Column8));
+                    Assert.IsTrue(new bool[] { true, true, true, false, false }.SequenceEqual(typed.Column1.ToArray()));
+                    Assert.IsTrue(new int[] { -1, 0, 1, 2, 3, }.SequenceEqual(typed.Column2.ToArray()));
+                    Assert.IsTrue(new double[] { -1.5, -0.5, 0.5, 1.5, 2.5 }.SequenceEqual(typed.Column3.ToArray()));
+                    Assert.IsTrue(new TestCategorySameValuesEnum[] { TestCategorySameValuesEnum.Bazz, TestCategorySameValuesEnum.Bazz, TestCategorySameValuesEnum.Fizz, TestCategorySameValuesEnum.Fizz, TestCategorySameValuesEnum.Buzz }.SequenceEqual(typed.Column4.ToArray()));
+                    Assert.IsTrue(new DateTimeOffset[] { new DateTime(1969, 12, 31, 23, 59, 59, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 1, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 2, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 3, 0, DateTimeKind.Utc) }.SequenceEqual(typed.Column5.ToArray()));
+                    Assert.IsTrue(new TimeSpan[] { new TimeSpan(0, 0, 0), new TimeSpan(1, 1, 1), new TimeSpan(2, 2, 2), new TimeSpan(3, 3, 3), new TimeSpan(4, 4, 4) }.SequenceEqual(typed.Column6.ToArray()));
+                    Assert.IsTrue(new DateTime[] { new DateTime(1969, 12, 31, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 2, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 3, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 4, 0, 0, 0, DateTimeKind.Utc) }.SequenceEqual(typed.Column7.ToArray()));
+                    Assert.IsTrue(new string[] { "A", "", "aaaaaaaa", "bbbbbbbbbbbbb", "CC" }.SequenceEqual(typed.Column8.ToArray()));
                 }
 
                 {
@@ -478,14 +478,14 @@ namespace FeatherDotNet.Tests
                     Assert.IsTrue(new DateTime?[] { new DateTime(1969, 12, 31, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 2, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 3, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 4, 0, 0, 0, DateTimeKind.Utc) }.SequenceEqual(t7));
                     Assert.IsTrue(new string[] { "A", "", "aaaaaaaa", "bbbbbbbbbbbbb", "CC" }.SequenceEqual(t8));
 
-                    Assert.IsTrue(new bool?[] { true, true, true, false, false }.SequenceEqual(typedNull.Column1));
-                    Assert.IsTrue(new int?[] { -1, 0, 1, 2, 3, }.SequenceEqual(typedNull.Column2));
-                    Assert.IsTrue(new double?[] { -1.5, -0.5, 0.5, 1.5, 2.5 }.SequenceEqual(typedNull.Column3));
-                    Assert.IsTrue(new string[] { "A", "A", "B", "B", "C" }.SequenceEqual(typedNull.Column4));
-                    Assert.IsTrue(new DateTimeOffset?[] { new DateTime(1969, 12, 31, 23, 59, 59, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 1, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 2, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 3, 0, DateTimeKind.Utc) }.SequenceEqual(typedNull.Column5));
-                    Assert.IsTrue(new TimeSpan?[] { new TimeSpan(0, 0, 0), new TimeSpan(1, 1, 1), new TimeSpan(2, 2, 2), new TimeSpan(3, 3, 3), new TimeSpan(4, 4, 4) }.SequenceEqual(typedNull.Column6));
-                    Assert.IsTrue(new DateTime?[] { new DateTime(1969, 12, 31, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 2, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 3, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 4, 0, 0, 0, DateTimeKind.Utc) }.SequenceEqual(typedNull.Column7));
-                    Assert.IsTrue(new string[] { "A", "", "aaaaaaaa", "bbbbbbbbbbbbb", "CC" }.SequenceEqual(typedNull.Column8));
+                    Assert.IsTrue(new bool?[] { true, true, true, false, false }.SequenceEqual(typedNull.Column1.ToArray()));
+                    Assert.IsTrue(new int?[] { -1, 0, 1, 2, 3, }.SequenceEqual(typedNull.Column2.ToArray()));
+                    Assert.IsTrue(new double?[] { -1.5, -0.5, 0.5, 1.5, 2.5 }.SequenceEqual(typedNull.Column3.ToArray()));
+                    Assert.IsTrue(new string[] { "A", "A", "B", "B", "C" }.SequenceEqual(typedNull.Column4.ToArray()));
+                    Assert.IsTrue(new DateTimeOffset?[] { new DateTime(1969, 12, 31, 23, 59, 59, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 1, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 2, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 3, 0, DateTimeKind.Utc) }.SequenceEqual(typedNull.Column5.ToArray()));
+                    Assert.IsTrue(new TimeSpan?[] { new TimeSpan(0, 0, 0), new TimeSpan(1, 1, 1), new TimeSpan(2, 2, 2), new TimeSpan(3, 3, 3), new TimeSpan(4, 4, 4) }.SequenceEqual(typedNull.Column6.ToArray()));
+                    Assert.IsTrue(new DateTime?[] { new DateTime(1969, 12, 31, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 2, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 3, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 4, 0, 0, 0, DateTimeKind.Utc) }.SequenceEqual(typedNull.Column7.ToArray()));
+                    Assert.IsTrue(new string[] { "A", "", "aaaaaaaa", "bbbbbbbbbbbbb", "CC" }.SequenceEqual(typedNull.Column8.ToArray()));
                 }
 
                 {
@@ -524,14 +524,14 @@ namespace FeatherDotNet.Tests
                     Assert.IsTrue(new DateTime?[] { new DateTime(1969, 12, 31, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 2, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 3, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 4, 0, 0, 0, DateTimeKind.Utc) }.SequenceEqual(t7));
                     Assert.IsTrue(new string[] { "A", "", "aaaaaaaa", "bbbbbbbbbbbbb", "CC" }.SequenceEqual(t8));
 
-                    Assert.IsTrue(new bool?[] { true, true, true, false, false }.SequenceEqual(typedNull.Column1));
-                    Assert.IsTrue(new int?[] { -1, 0, 1, 2, 3, }.SequenceEqual(typedNull.Column2));
-                    Assert.IsTrue(new double?[] { -1.5, -0.5, 0.5, 1.5, 2.5 }.SequenceEqual(typedNull.Column3));
-                    Assert.IsTrue(new TestCategorySameNamesEnum?[] { TestCategorySameNamesEnum.A, TestCategorySameNamesEnum.A, TestCategorySameNamesEnum.B, TestCategorySameNamesEnum.B, TestCategorySameNamesEnum.C }.SequenceEqual(typedNull.Column4));
-                    Assert.IsTrue(new DateTimeOffset?[] { new DateTime(1969, 12, 31, 23, 59, 59, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 1, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 2, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 3, 0, DateTimeKind.Utc) }.SequenceEqual(typedNull.Column5));
-                    Assert.IsTrue(new TimeSpan?[] { new TimeSpan(0, 0, 0), new TimeSpan(1, 1, 1), new TimeSpan(2, 2, 2), new TimeSpan(3, 3, 3), new TimeSpan(4, 4, 4) }.SequenceEqual(typedNull.Column6));
-                    Assert.IsTrue(new DateTime?[] { new DateTime(1969, 12, 31, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 2, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 3, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 4, 0, 0, 0, DateTimeKind.Utc) }.SequenceEqual(typedNull.Column7));
-                    Assert.IsTrue(new string[] { "A", "", "aaaaaaaa", "bbbbbbbbbbbbb", "CC" }.SequenceEqual(typedNull.Column8));
+                    Assert.IsTrue(new bool?[] { true, true, true, false, false }.SequenceEqual(typedNull.Column1.ToArray()));
+                    Assert.IsTrue(new int?[] { -1, 0, 1, 2, 3, }.SequenceEqual(typedNull.Column2.ToArray()));
+                    Assert.IsTrue(new double?[] { -1.5, -0.5, 0.5, 1.5, 2.5 }.SequenceEqual(typedNull.Column3.ToArray()));
+                    Assert.IsTrue(new TestCategorySameNamesEnum?[] { TestCategorySameNamesEnum.A, TestCategorySameNamesEnum.A, TestCategorySameNamesEnum.B, TestCategorySameNamesEnum.B, TestCategorySameNamesEnum.C }.SequenceEqual(typedNull.Column4.ToArray()));
+                    Assert.IsTrue(new DateTimeOffset?[] { new DateTime(1969, 12, 31, 23, 59, 59, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 1, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 2, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 3, 0, DateTimeKind.Utc) }.SequenceEqual(typedNull.Column5.ToArray()));
+                    Assert.IsTrue(new TimeSpan?[] { new TimeSpan(0, 0, 0), new TimeSpan(1, 1, 1), new TimeSpan(2, 2, 2), new TimeSpan(3, 3, 3), new TimeSpan(4, 4, 4) }.SequenceEqual(typedNull.Column6.ToArray()));
+                    Assert.IsTrue(new DateTime?[] { new DateTime(1969, 12, 31, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 2, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 3, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 4, 0, 0, 0, DateTimeKind.Utc) }.SequenceEqual(typedNull.Column7.ToArray()));
+                    Assert.IsTrue(new string[] { "A", "", "aaaaaaaa", "bbbbbbbbbbbbb", "CC" }.SequenceEqual(typedNull.Column8.ToArray()));
                 }
 
                 {
@@ -570,14 +570,14 @@ namespace FeatherDotNet.Tests
                     Assert.IsTrue(new DateTime?[] { new DateTime(1969, 12, 31, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 2, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 3, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 4, 0, 0, 0, DateTimeKind.Utc) }.SequenceEqual(t7));
                     Assert.IsTrue(new string[] { "A", "", "aaaaaaaa", "bbbbbbbbbbbbb", "CC" }.SequenceEqual(t8));
 
-                    Assert.IsTrue(new bool?[] { true, true, true, false, false }.SequenceEqual(typedNull.Column1));
-                    Assert.IsTrue(new int?[] { -1, 0, 1, 2, 3, }.SequenceEqual(typedNull.Column2));
-                    Assert.IsTrue(new double?[] { -1.5, -0.5, 0.5, 1.5, 2.5 }.SequenceEqual(typedNull.Column3));
-                    Assert.IsTrue(new TestCategorySameValuesEnum?[] { TestCategorySameValuesEnum.Bazz, TestCategorySameValuesEnum.Bazz, TestCategorySameValuesEnum.Fizz, TestCategorySameValuesEnum.Fizz, TestCategorySameValuesEnum.Buzz }.SequenceEqual(typedNull.Column4));
-                    Assert.IsTrue(new DateTimeOffset?[] { new DateTime(1969, 12, 31, 23, 59, 59, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 1, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 2, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 3, 0, DateTimeKind.Utc) }.SequenceEqual(typedNull.Column5));
-                    Assert.IsTrue(new TimeSpan?[] { new TimeSpan(0, 0, 0), new TimeSpan(1, 1, 1), new TimeSpan(2, 2, 2), new TimeSpan(3, 3, 3), new TimeSpan(4, 4, 4) }.SequenceEqual(typedNull.Column6));
-                    Assert.IsTrue(new DateTime?[] { new DateTime(1969, 12, 31, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 2, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 3, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 4, 0, 0, 0, DateTimeKind.Utc) }.SequenceEqual(typedNull.Column7));
-                    Assert.IsTrue(new string[] { "A", "", "aaaaaaaa", "bbbbbbbbbbbbb", "CC" }.SequenceEqual(typedNull.Column8));
+                    Assert.IsTrue(new bool?[] { true, true, true, false, false }.SequenceEqual(typedNull.Column1.ToArray()));
+                    Assert.IsTrue(new int?[] { -1, 0, 1, 2, 3, }.SequenceEqual(typedNull.Column2.ToArray()));
+                    Assert.IsTrue(new double?[] { -1.5, -0.5, 0.5, 1.5, 2.5 }.SequenceEqual(typedNull.Column3.ToArray()));
+                    Assert.IsTrue(new TestCategorySameValuesEnum?[] { TestCategorySameValuesEnum.Bazz, TestCategorySameValuesEnum.Bazz, TestCategorySameValuesEnum.Fizz, TestCategorySameValuesEnum.Fizz, TestCategorySameValuesEnum.Buzz }.SequenceEqual(typedNull.Column4.ToArray()));
+                    Assert.IsTrue(new DateTimeOffset?[] { new DateTime(1969, 12, 31, 23, 59, 59, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 1, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 2, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 3, 0, DateTimeKind.Utc) }.SequenceEqual(typedNull.Column5.ToArray()));
+                    Assert.IsTrue(new TimeSpan?[] { new TimeSpan(0, 0, 0), new TimeSpan(1, 1, 1), new TimeSpan(2, 2, 2), new TimeSpan(3, 3, 3), new TimeSpan(4, 4, 4) }.SequenceEqual(typedNull.Column6.ToArray()));
+                    Assert.IsTrue(new DateTime?[] { new DateTime(1969, 12, 31, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 2, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 3, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 4, 0, 0, 0, DateTimeKind.Utc) }.SequenceEqual(typedNull.Column7.ToArray()));
+                    Assert.IsTrue(new string[] { "A", "", "aaaaaaaa", "bbbbbbbbbbbbb", "CC" }.SequenceEqual(typedNull.Column8.ToArray()));
                 }
             }
         }
@@ -762,14 +762,14 @@ namespace FeatherDotNet.Tests
                     Assert.IsTrue(new DateTime?[] { new DateTime(1969, 12, 31, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc), null, new DateTime(1970, 1, 3, 0, 0, 0, DateTimeKind.Utc), null }.SequenceEqual(t7));
                     Assert.IsTrue(new string[] { "A", "", null, "bbbbbbbbbbbbb", null }.SequenceEqual(t8));
 
-                    Assert.IsTrue(new bool?[] { true, true, null, false, null }.SequenceEqual(typedNull.Column1));
-                    Assert.IsTrue(new int?[] { -1, 0, null, 2, null, }.SequenceEqual(typedNull.Column2));
-                    Assert.IsTrue(new double?[] { -1.5, -0.5, null, 1.5, null }.SequenceEqual(typedNull.Column3));
-                    Assert.IsTrue(new string[] { "A", "A", null, "B", null }.SequenceEqual(typedNull.Column4));
-                    Assert.IsTrue(new DateTimeOffset?[] { new DateTime(1969, 12, 31, 23, 59, 59, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), null, new DateTime(1970, 1, 1, 0, 0, 2, 0, DateTimeKind.Utc), null }.SequenceEqual(typedNull.Column5));
-                    Assert.IsTrue(new TimeSpan?[] { new TimeSpan(0, 0, 0), new TimeSpan(1, 1, 1), null, new TimeSpan(3, 3, 3), null }.SequenceEqual(typedNull.Column6));
-                    Assert.IsTrue(new DateTime?[] { new DateTime(1969, 12, 31, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc), null, new DateTime(1970, 1, 3, 0, 0, 0, DateTimeKind.Utc), null }.SequenceEqual(typedNull.Column7));
-                    Assert.IsTrue(new string[] { "A", "", null, "bbbbbbbbbbbbb", null }.SequenceEqual(typedNull.Column8));
+                    Assert.IsTrue(new bool?[] { true, true, null, false, null }.SequenceEqual(typedNull.Column1.ToArray()));
+                    Assert.IsTrue(new int?[] { -1, 0, null, 2, null, }.SequenceEqual(typedNull.Column2.ToArray()));
+                    Assert.IsTrue(new double?[] { -1.5, -0.5, null, 1.5, null }.SequenceEqual(typedNull.Column3.ToArray()));
+                    Assert.IsTrue(new string[] { "A", "A", null, "B", null }.SequenceEqual(typedNull.Column4.ToArray()));
+                    Assert.IsTrue(new DateTimeOffset?[] { new DateTime(1969, 12, 31, 23, 59, 59, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), null, new DateTime(1970, 1, 1, 0, 0, 2, 0, DateTimeKind.Utc), null }.SequenceEqual(typedNull.Column5.ToArray()));
+                    Assert.IsTrue(new TimeSpan?[] { new TimeSpan(0, 0, 0), new TimeSpan(1, 1, 1), null, new TimeSpan(3, 3, 3), null }.SequenceEqual(typedNull.Column6.ToArray()));
+                    Assert.IsTrue(new DateTime?[] { new DateTime(1969, 12, 31, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc), null, new DateTime(1970, 1, 3, 0, 0, 0, DateTimeKind.Utc), null }.SequenceEqual(typedNull.Column7.ToArray()));
+                    Assert.IsTrue(new string[] { "A", "", null, "bbbbbbbbbbbbb", null }.SequenceEqual(typedNull.Column8.ToArray()));
                 }
 
                 {
@@ -808,14 +808,14 @@ namespace FeatherDotNet.Tests
                     Assert.IsTrue(new DateTime?[] { new DateTime(1969, 12, 31, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc), null, new DateTime(1970, 1, 3, 0, 0, 0, DateTimeKind.Utc), null }.SequenceEqual(t7));
                     Assert.IsTrue(new string[] { "A", "", null, "bbbbbbbbbbbbb", null }.SequenceEqual(t8));
 
-                    Assert.IsTrue(new bool?[] { true, true, null, false, null }.SequenceEqual(typedNull.Column1));
-                    Assert.IsTrue(new int?[] { -1, 0, null, 2, null, }.SequenceEqual(typedNull.Column2));
-                    Assert.IsTrue(new double?[] { -1.5, -0.5, null, 1.5, null }.SequenceEqual(typedNull.Column3));
-                    Assert.IsTrue(new TestCategorySameNamesEnum?[] { TestCategorySameNamesEnum.A, TestCategorySameNamesEnum.A, null, TestCategorySameNamesEnum.B, null }.SequenceEqual(typedNull.Column4));
-                    Assert.IsTrue(new DateTimeOffset?[] { new DateTime(1969, 12, 31, 23, 59, 59, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), null, new DateTime(1970, 1, 1, 0, 0, 2, 0, DateTimeKind.Utc), null }.SequenceEqual(typedNull.Column5));
-                    Assert.IsTrue(new TimeSpan?[] { new TimeSpan(0, 0, 0), new TimeSpan(1, 1, 1), null, new TimeSpan(3, 3, 3), null }.SequenceEqual(typedNull.Column6));
-                    Assert.IsTrue(new DateTime?[] { new DateTime(1969, 12, 31, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc), null, new DateTime(1970, 1, 3, 0, 0, 0, DateTimeKind.Utc), null }.SequenceEqual(typedNull.Column7));
-                    Assert.IsTrue(new string[] { "A", "", null, "bbbbbbbbbbbbb", null }.SequenceEqual(typedNull.Column8));
+                    Assert.IsTrue(new bool?[] { true, true, null, false, null }.SequenceEqual(typedNull.Column1.ToArray()));
+                    Assert.IsTrue(new int?[] { -1, 0, null, 2, null, }.SequenceEqual(typedNull.Column2.ToArray()));
+                    Assert.IsTrue(new double?[] { -1.5, -0.5, null, 1.5, null }.SequenceEqual(typedNull.Column3.ToArray()));
+                    Assert.IsTrue(new TestCategorySameNamesEnum?[] { TestCategorySameNamesEnum.A, TestCategorySameNamesEnum.A, null, TestCategorySameNamesEnum.B, null }.SequenceEqual(typedNull.Column4.ToArray()));
+                    Assert.IsTrue(new DateTimeOffset?[] { new DateTime(1969, 12, 31, 23, 59, 59, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), null, new DateTime(1970, 1, 1, 0, 0, 2, 0, DateTimeKind.Utc), null }.SequenceEqual(typedNull.Column5.ToArray()));
+                    Assert.IsTrue(new TimeSpan?[] { new TimeSpan(0, 0, 0), new TimeSpan(1, 1, 1), null, new TimeSpan(3, 3, 3), null }.SequenceEqual(typedNull.Column6.ToArray()));
+                    Assert.IsTrue(new DateTime?[] { new DateTime(1969, 12, 31, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc), null, new DateTime(1970, 1, 3, 0, 0, 0, DateTimeKind.Utc), null }.SequenceEqual(typedNull.Column7.ToArray()));
+                    Assert.IsTrue(new string[] { "A", "", null, "bbbbbbbbbbbbb", null }.SequenceEqual(typedNull.Column8.ToArray()));
                 }
 
                 {
@@ -854,14 +854,14 @@ namespace FeatherDotNet.Tests
                     Assert.IsTrue(new DateTime?[] { new DateTime(1969, 12, 31, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc), null, new DateTime(1970, 1, 3, 0, 0, 0, DateTimeKind.Utc), null }.SequenceEqual(t7));
                     Assert.IsTrue(new string[] { "A", "", null, "bbbbbbbbbbbbb", null }.SequenceEqual(t8));
 
-                    Assert.IsTrue(new bool?[] { true, true, null, false, null }.SequenceEqual(typedNull.Column1));
-                    Assert.IsTrue(new int?[] { -1, 0, null, 2, null, }.SequenceEqual(typedNull.Column2));
-                    Assert.IsTrue(new double?[] { -1.5, -0.5, null, 1.5, null }.SequenceEqual(typedNull.Column3));
-                    Assert.IsTrue(new TestCategorySameValuesEnum?[] { TestCategorySameValuesEnum.Bazz, TestCategorySameValuesEnum.Bazz, null, TestCategorySameValuesEnum.Fizz, null }.SequenceEqual(typedNull.Column4));
-                    Assert.IsTrue(new DateTimeOffset?[] { new DateTime(1969, 12, 31, 23, 59, 59, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), null, new DateTime(1970, 1, 1, 0, 0, 2, 0, DateTimeKind.Utc), null }.SequenceEqual(typedNull.Column5));
-                    Assert.IsTrue(new TimeSpan?[] { new TimeSpan(0, 0, 0), new TimeSpan(1, 1, 1), null, new TimeSpan(3, 3, 3), null }.SequenceEqual(typedNull.Column6));
-                    Assert.IsTrue(new DateTime?[] { new DateTime(1969, 12, 31, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc), null, new DateTime(1970, 1, 3, 0, 0, 0, DateTimeKind.Utc), null }.SequenceEqual(typedNull.Column7));
-                    Assert.IsTrue(new string[] { "A", "", null, "bbbbbbbbbbbbb", null }.SequenceEqual(typedNull.Column8));
+                    Assert.IsTrue(new bool?[] { true, true, null, false, null }.SequenceEqual(typedNull.Column1.ToArray()));
+                    Assert.IsTrue(new int?[] { -1, 0, null, 2, null, }.SequenceEqual(typedNull.Column2.ToArray()));
+                    Assert.IsTrue(new double?[] { -1.5, -0.5, null, 1.5, null }.SequenceEqual(typedNull.Column3.ToArray()));
+                    Assert.IsTrue(new TestCategorySameValuesEnum?[] { TestCategorySameValuesEnum.Bazz, TestCategorySameValuesEnum.Bazz, null, TestCategorySameValuesEnum.Fizz, null }.SequenceEqual(typedNull.Column4.ToArray()));
+                    Assert.IsTrue(new DateTimeOffset?[] { new DateTime(1969, 12, 31, 23, 59, 59, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), null, new DateTime(1970, 1, 1, 0, 0, 2, 0, DateTimeKind.Utc), null }.SequenceEqual(typedNull.Column5.ToArray()));
+                    Assert.IsTrue(new TimeSpan?[] { new TimeSpan(0, 0, 0), new TimeSpan(1, 1, 1), null, new TimeSpan(3, 3, 3), null }.SequenceEqual(typedNull.Column6.ToArray()));
+                    Assert.IsTrue(new DateTime?[] { new DateTime(1969, 12, 31, 0, 0, 0, DateTimeKind.Utc), new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc), null, new DateTime(1970, 1, 3, 0, 0, 0, DateTimeKind.Utc), null }.SequenceEqual(typedNull.Column7.ToArray()));
+                    Assert.IsTrue(new string[] { "A", "", null, "bbbbbbbbbbbbb", null }.SequenceEqual(typedNull.Column8.ToArray()));
                 }
             }
         }
