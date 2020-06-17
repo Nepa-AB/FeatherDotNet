@@ -5,7 +5,7 @@
         <Version>0.6.1</Version>
         <Authors>Kevin Montrose</Authors>
         <Company>Kevin Montrose</Company>
-        <Product>FeatherDotNet</Product>
+        <Product>FeatherDotNet-Nepa</Product>
         <Description>An implementation of the Feather format for .NET.</Description>
     </PropertyGroup>
 </Project>
