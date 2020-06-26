@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
     <metadata>
 		<id>FeatherDotNet-Nepa</id>
-		<version>0.6.1</version>
+		<version>0.6.2</version>
 		<authors>Kevin Montrose</authors>
 		<owners>kmontrose</owners>
 		<licenseUrl>https://opensource.org/licenses/Apache-2.0</licenseUrl>

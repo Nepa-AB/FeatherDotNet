@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.MemoryMappedFiles;
+using System.Threading.Tasks;
 using FeatherDotNet.Impl;
 
 namespace FeatherDotNet
@@ -15,7 +16,7 @@ namespace FeatherDotNet
     {
         /// <summary>
         /// Create a dataframe from the given file, with the given basis.
-        /// 
+        ///
         /// Throws if the dataframe cannot be created.
         /// </summary>
         public static DataFrame ReadFromFile(string filePath, BasisType basis)
@@ -32,7 +33,7 @@ namespace FeatherDotNet
 
         /// <summary>
         /// Create a dataframe from the given file, with the given basis.
-        /// 
+        ///
         /// Returns false if the dataframe cannot be created.
         /// </summary>
         public static bool TryReadFromFile(string filePath, BasisType basis, out DataFrame frame, out string errorMessage)
@@ -63,7 +64,7 @@ namespace FeatherDotNet
 
         /// <summary>
         /// Create a dataframe from a memory mapped file with the given name, with the given basis.
-        /// 
+        ///
         /// Throws if the dataframe cannot be created.
         /// </summary>
         public static DataFrame ReadFromName(string name, long size, BasisType basis)
@@ -80,7 +81,7 @@ namespace FeatherDotNet
 
         /// <summary>
         /// Create a dataframe from a memory mapped file with the given name, with the given basis.
-        /// 
+        ///
         /// Returns false if the dataframe cannot be created.
         /// </summary>
         public static bool TryReadFromName(string name, long size, BasisType basis, out DataFrame frame, out string errorMessage)
@@ -107,8 +108,70 @@ namespace FeatherDotNet
         }
 
         /// <summary>
+        /// Create a dataframe from the stream passed, with the given basis.
+        ///
+        /// Throws if the dataframe cannot be created.
+        /// </summary>
+        public static async Task<DataFrame> ReadFromStream(Stream stream, BasisType basis)
+        {
+
+            var (success, ret, errorMessage) = await TryReadFromStream(stream, basis);
+            if (!success)
+            {
+                throw new InvalidOperationException(errorMessage);
+            }
+
+            return ret;
+        }
+
+        /// <summary>
+        /// Create a dataframe from the given stream, with the given basis.
+        ///
+        /// Returns false if the dataframe cannot be created.
+        /// </summary>
+        public static async Task<(bool success, DataFrame frame, string errorMessage)> TryReadFromStream(Stream stream, BasisType basis) {
+            string errorMessage = null;
+            DataFrame frame = null;
+            MemoryMappedFile memoryMapped;
+            try
+            {
+                memoryMapped = await MakeMemoryMappedProxy(stream);
+            }
+            catch (Exception e)
+            {
+                errorMessage = $"Encoutered {e.GetType().Name} trying to create a memory mapped proxy for passed bytes: {e.Message}";
+                frame = null;
+                return (false, frame, errorMessage);
+            }
+
+            var ret = TryRead(memoryMapped, stream.Length, basis, out frame, out errorMessage);
+            if (!ret)
+            {
+                memoryMapped.Dispose();
+            }
+
+            return (ret, frame, errorMessage);
+        }
+
+        private static async Task<MemoryMappedFile> MakeMemoryMappedProxy(Stream stream)
+        {
+
+            var newFile = MemoryMappedFile.CreateNew(null, stream.Length);
+            try {
+                await using var mmStream = newFile.CreateViewStream();
+                await stream.CopyToAsync(mmStream);
+            }
+            catch
+            {
+                newFile?.Dispose();
+                throw;
+            }
+            return newFile;
+        }
+
+        /// <summary>
         /// Create a dataframe from the bytes passed, with the given basis.
-        /// 
+        ///
         /// Throws if the dataframe cannot be created.
         /// </summary>
         public static DataFrame ReadFromBytes(byte[] bytes, BasisType basis)
@@ -125,7 +188,7 @@ namespace FeatherDotNet
 
         /// <summary>
         /// Create a dataframe from the give bytes, with the given basis.
-        /// 
+        ///
         /// Returns false if the dataframe cannot be created.
         /// </summary>
         public static bool TryReadFromBytes(byte[] bytes, BasisType basis, out DataFrame frame, out string errorMessage)
@@ -194,7 +257,7 @@ namespace FeatherDotNet
             errorMessage = null;
             return true;
         }
-        
+
         static bool TryReadMetaData(MemoryMappedFile file, long size, out Metadata metadata, out string error)
         {
             if (size < FeatherMagic.MAGIC_HEADER_SIZE * 2)
@@ -236,9 +299,9 @@ namespace FeatherDotNet
 
                 var metadataBytes = new byte[metadataSize];
                 accessor.ReadArray(metadataStart, metadataBytes, 0, (int)metadataSize);
-                
+
                 // note: It'd be nice to not actually use flatbuffers for this,
-                //   kind of a heavy (re)build dependency for reading, like, 4 
+                //   kind of a heavy (re)build dependency for reading, like, 4
                 //   things
                 var metadataBuffer = new ByteBuffer(metadataBytes);
                 var metadataCTable = CTable.GetRootAsCTable(metadataBuffer);
@@ -266,10 +329,10 @@ namespace FeatherDotNet
 
                     string[] categoryLevels = null;
                     DateTimePrecisionType precision = default(DateTimePrecisionType);
-                    
+
                     var arrayDetails = metadataColumn.Values.Value;
                     var effectiveType = arrayDetails.Type;
-                    
+
                     switch (metadataType)
                     {
                         case TypeMetadata.CategoryMetadata:
@@ -294,11 +357,11 @@ namespace FeatherDotNet
                                 return false;
                             }
 
-                            // note: this type is spec'd (https://github.com/wesm/feather/blob/master/cpp/src/feather/metadata.fbs#L25), 
+                            // note: this type is spec'd (https://github.com/wesm/feather/blob/master/cpp/src/feather/metadata.fbs#L25),
                             //  but it looks like R always writes it as an int64?
                             // Possibly a bug.
                             effectiveType = feather.fbs.Type.TIMESTAMP;
-                            
+
                             break;
 
                         case TypeMetadata.TimeMetadata:
@@ -315,7 +378,7 @@ namespace FeatherDotNet
                                 return false;
                             }
 
-                            // note: this type is spec'd (https://github.com/wesm/feather/blob/master/cpp/src/feather/metadata.fbs#L27), 
+                            // note: this type is spec'd (https://github.com/wesm/feather/blob/master/cpp/src/feather/metadata.fbs#L27),
                             //  but it looks like R always writes it as an int64?
                             // Possibly a bug.
                             effectiveType = feather.fbs.Type.TIME;
@@ -330,7 +393,7 @@ namespace FeatherDotNet
                                 return false;
                             }
 
-                            // note: this type is spec'd (https://github.com/wesm/feather/blob/master/cpp/src/feather/metadata.fbs#L26), 
+                            // note: this type is spec'd (https://github.com/wesm/feather/blob/master/cpp/src/feather/metadata.fbs#L26),
                             //  but it looks like R always writes it as an int32?
                             // Possibly a bug.
                             effectiveType = feather.fbs.Type.DATE;
@@ -410,7 +473,7 @@ namespace FeatherDotNet
                         errorMessage = null;
                         return true;
 
-                    
+
                     case feather.fbs.Type.TIMESTAMP:
                         switch (precision)
                         {
@@ -674,7 +737,7 @@ namespace FeatherDotNet
             var unit = metadataValue.Unit;
 
             // note: supporting other timezones would be nice,
-            //   but the timezone included appears to just be 
+            //   but the timezone included appears to just be
             //   a passthrough from as.POSIXct (in R anyway)
             //   which lets a bunch of ambiguous junk through
             //   (timezone abbreviations are NOT unique, or
@@ -769,7 +832,7 @@ namespace FeatherDotNet
                     numNullBytes++;
                 }
             }
-            
+
             // a naive reading of the spec suggests that the null bitmask should be
             //   aligned based on the _type_ but it appears to always be long
             //   aligned.
